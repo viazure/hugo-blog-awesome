@@ -2,3 +2,19 @@
 <hr style="margin-top: 40px; margin-bottom: 40px;" />
 {{ template "_internal/disqus.html" . }}
 {{- end -}}
+
+{{- if .Site.Params.twikoo.envId -}}
+<hr style="margin-top: 40px; margin-bottom: 40px;" />
+<div id="tcomment"></div>
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.41/dist/twikoo.min.js"
+    integrity="sha384-QgZlvw//W8lQwue8uv2qAszlmDJE1GzJa4dEA/tt3EEyn7VQd5BgrdZMzoCAkTQT" crossorigin="anonymous">
+    </script>
+<script>
+    twikoo.init({
+        envId: '{{ .Site.Params.twikoo.envId }}',
+        el: '#tcomment',
+        // path: location.pathname, // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+        lang: 'zh-CN',
+    })
+</script>
+{{- end -}}
