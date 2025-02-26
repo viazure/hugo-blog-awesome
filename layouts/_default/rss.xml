@@ -19,6 +19,10 @@
     <title>{{ .Site.Title }}</title>
     <link>{{ .Permalink }}</link>
     <description>Recent content on {{ .Site.Title }}</description>
+    <follow_challenge>
+    <feedId>96027576665585664</feedId>
+    <userId>59414119634735104</userId>
+    </follow_challenge>
     <generator>Hugo -- gohugo.io</generator>
     <language>{{ site.Language.LanguageCode }}</language>
     <webfeeds:icon>{{ "icons/favicon.svg" | absURL }}</webfeeds:icon>
