@@ -1,4 +1,4 @@
-{{- with .Site.Params.goatcounter.code -}}
-<script data-goatcounter="{{ . }}"
-        async src="//gc.zgo.at/count.js"></script>
+{{- with .Site.Params.analytics.goatcounter -}}
+<script data-goatcounter="{{ .code }}"
+        async src="{{ .src }}"></script>
 {{- end -}}
