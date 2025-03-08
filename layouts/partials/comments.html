@@ -5,7 +5,7 @@
 {{ template "_internal/disqus.html" . }}
 {{- end -}}
 
-{{- if .Site.Params.comments.twikoo.envId -}}
+{{- with .Site.Params.comments.twikoo -}}
 <hr style="margin-top: 40px; margin-bottom: 40px;" />
 <div id="tcomment"></div>
 <script src="https://registry.npmmirror.com/twikoo/1.6.41/files/dist/twikoo.min.js"
@@ -15,9 +15,11 @@
 <script>
     window.addEventListener('load', () => {
         twikoo.init({
-            envId: '{{ .Site.Params.comments.twikoo.envId }}',
+            envId: '{{ .envId }}',
             el: '#tcomment',
-            lang: '{{ default "zh-CN" .Site.Params.comments.twikoo.lang }}',
+            {{- with .region -}}, region: '{{ . }}'{{- end -}}
+            {{- with .path -}}, path: '{{ . }}'{{- end -}}
+            {{- with .lang -}}, lang: '{{ . }}'{{- end -}}
         })
     })
 </script>
