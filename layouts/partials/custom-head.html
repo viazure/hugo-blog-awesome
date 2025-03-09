@@ -1,4 +1,14 @@
 {{- with .Site.Params.analytics.goatcounter -}}
-<script data-goatcounter="{{ .url }}"
-        async src="{{ .src }}"></script>
+  {{- if .externalSrc -}}
+    <script data-goatcounter="{{ .url }}"
+            async
+            src="{{ .externalSrc }}"></script>
+  {{- else -}}
+    {{- $js := resources.Get .localSrc | minify | fingerprint -}}
+    <script data-goatcounter="{{ .url }}"
+            async
+            src="{{ $js.RelPermalink }}"
+            integrity="{{ $js.Data.Integrity }}"
+            crossorigin="anonymous"></script>
+  {{- end -}}
 {{- end -}}
