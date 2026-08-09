@@ -2,6 +2,10 @@
 
 本博客主题基于 [Hugo Blog Awesome](https://github.com/hugo-sid/hugo-blog-awesome) 进行修改，基本使用方式请参考原仓库教程。
 
+> [!IMPORTANT]
+> 本主题需要 Hugo extended **v0.160.0 或更高版本**。
+> 从旧版升级时，请先阅读上游的 [Migration Guide](./MIGRATION.md)。
+
 ## 修改内容
 
 ### RSS 订阅功能优化

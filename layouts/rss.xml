@@ -8,6 +8,7 @@
 {{- else -}}
 {{- $pages = where $pctx.Pages "Section" "in" $mainSections -}}
 {{- end -}}
+{{- $pages = where $pages "Params.exclude_from_rss" "!=" true -}}
 {{- $limit := .Site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
 {{- $pages = $pages | first $limit -}}
@@ -26,7 +27,7 @@
     </follow_challenge>
     {{- end -}}
     <generator>Hugo -- gohugo.io</generator>
-    <language>{{ site.Language.LanguageCode }}</language>
+    <language>{{ site.Language.Locale }}</language>
     <webfeeds:icon>{{ "icons/favicon.svg" | absURL }}</webfeeds:icon>
     <webfeeds:logo>{{ "icons/favicon.svg" | absURL }}</webfeeds:logo>
     <image>
