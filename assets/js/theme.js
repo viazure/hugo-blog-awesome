@@ -1,6 +1,6 @@
 (() => {
     "use strict";
-    const LS_THEME_KEY = "theme";
+    const LS_THEME_KEY = "theme-preference";
     const THEMES = {
         LIGHT: "light",
         DARK: "dark",
@@ -8,68 +8,77 @@
     };
 
     const body = document.body;
-    const config = body.getAttribute("data-theme");
+    const root = document.documentElement;
+    const config = body.getAttribute("data-theme") || THEMES.AUTO;
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const getThemeState = () => {
-        const lsState = localStorage.getItem(LS_THEME_KEY);
-        if (lsState) return lsState;
+    const getSystemTheme = () =>
+        media.matches ? THEMES.DARK : THEMES.LIGHT;
 
-        let state;
-        switch (config) {
-            case THEMES.DARK:
-                state = THEMES.DARK;
-                break;
-            case THEMES.LIGHT:
-                state = THEMES.LIGHT;
-                break;
-            case THEMES.AUTO:
-            default:
-                state = window.matchMedia("(prefers-color-scheme: dark)")
-                    .matches
-                    ? THEMES.DARK
-                    : THEMES.LIGHT;
-                break;
+    const getPreference = () => {
+        const stored = localStorage.getItem(LS_THEME_KEY);
+        if (
+            stored === THEMES.LIGHT ||
+            stored === THEMES.DARK ||
+            stored === THEMES.AUTO
+        ) {
+            return stored;
         }
-        return state;
+        if (config === THEMES.DARK || config === THEMES.LIGHT) {
+            return config;
+        }
+        return THEMES.AUTO;
     };
 
-    const initTheme = (state) => {
-        if (state === THEMES.DARK) {
-            document.documentElement.classList.add(THEMES.DARK);
-            document.documentElement.classList.remove(THEMES.LIGHT);
-        } else if (state === THEMES.LIGHT) {
-            document.documentElement.classList.remove(THEMES.DARK);
-            document.documentElement.classList.add(THEMES.LIGHT);
-        }
+    const resolveTheme = (pref) =>
+        pref === THEMES.AUTO ? getSystemTheme() : pref;
+
+    const applyTheme = (state) => {
+        root.classList.toggle(THEMES.DARK, state === THEMES.DARK);
+        root.classList.toggle(THEMES.LIGHT, state === THEMES.LIGHT);
     };
 
-    // init theme ASAP, then do the rest.
-    initTheme(getThemeState());
-    requestAnimationFrame(() => body.classList.remove("notransition"))
-    const toggleTheme = () => {
-        const state = getThemeState();
-        if (state === THEMES.DARK) {
-            localStorage.setItem(LS_THEME_KEY, THEMES.LIGHT);
-            initTheme(THEMES.LIGHT);
-        } else if (state === THEMES.LIGHT) {
-            localStorage.setItem(LS_THEME_KEY, THEMES.DARK);
-            initTheme(THEMES.DARK);
-        }
+    const sync = () => applyTheme(resolveTheme(getPreference()));
+
+    sync();
+    requestAnimationFrame(() => body.classList.remove("notransition"));
+
+    const onSystemChange = () => {
+        if (getPreference() === THEMES.AUTO) sync();
+    };
+    if (typeof media.addEventListener === "function") {
+        media.addEventListener("change", onSystemChange);
+    } else if (typeof media.addListener === "function") {
+        media.addListener(onSystemChange);
+    }
+
+    const toggleTheme = (event) => {
+        event.preventDefault();
+        const nextResolved =
+            resolveTheme(getPreference()) === THEMES.DARK
+                ? THEMES.LIGHT
+                : THEMES.DARK;
+        localStorage.setItem(
+            LS_THEME_KEY,
+            nextResolved === getSystemTheme() ? THEMES.AUTO : nextResolved
+        );
+        applyTheme(nextResolved);
     };
 
     window.addEventListener("DOMContentLoaded", () => {
-        // Theme switch
         const lamp = document.getElementById("mode");
+        if (lamp) {
+            lamp.addEventListener("click", toggleTheme);
+        }
 
-        lamp.addEventListener("click", () => toggleTheme());
-
-        // Blur the content when the menu is open
         const cbox = document.getElementById("menu-trigger");
-
-        cbox.addEventListener("change", function () {
-            const area = document.querySelector(".wrapper");
-            if (this.checked) return area.classList.add("blurry");
-            area.classList.remove("blurry");
-        });
+        if (cbox) {
+            cbox.addEventListener("change", function () {
+                const area = document.querySelector(".wrapper");
+                if (!area) return;
+                if (this.checked) return area.classList.add("blurry");
+                area.classList.remove("blurry");
+            });
+        }
     });
 })();
