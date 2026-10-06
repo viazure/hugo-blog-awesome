@@ -12,3 +12,16 @@
             crossorigin="anonymous"></script>
   {{- end -}}
 {{- end -}}
+
+{{- $pageSass := "" -}}
+{{- $layout := .Layout | default .Params.layout -}}
+{{- if eq $layout "workouts" -}}{{- $pageSass = "sass/page-workouts.scss" -}}{{- end -}}
+{{- if eq $layout "media" -}}{{- $pageSass = "sass/page-media.scss" -}}{{- end -}}
+{{- if $pageSass -}}
+  {{- $opts := dict "includePaths" (slice "themes/hugo-blog-awesome/assets/sass") "outputStyle" "compressed" -}}
+  {{- $css := resources.Get $pageSass | toCSS $opts | minify -}}
+  {{- if hugo.IsProduction -}}
+    {{- $css = $css | fingerprint -}}
+  {{- end -}}
+  <link href="{{ $css.RelPermalink }}" rel="stylesheet">
+{{- end -}}

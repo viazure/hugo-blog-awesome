@@ -12,6 +12,64 @@
 - id: "single.table_of_contents"
   translation: "Table of Contents"
 
+- id: "single.toc_open"
+  translation: "Open table of contents"
+
+- id: "single.toc_close"
+  translation: "Close table of contents"
+
+## SEARCH ##
+- id: "search.label"
+  translation: "Search"
+
+- id: "search.placeholder"
+  translation: "Search title, tags, or body"
+
+- id: "search.hint_navigate"
+  translation: "to navigate"
+
+- id: "search.hint_select"
+  translation: "to select"
+
+- id: "search.hint_dismiss"
+  translation: "to close"
+
+- id: "search.tips_label"
+  translation: "Search syntax"
+
+- id: "search.syntax_space"
+  translation: "space"
+
+- id: "search.syntax_token"
+  translation: "word"
+
+- id: "search.syntax_and"
+  translation: "all terms"
+
+- id: "search.syntax_or"
+  translation: "any term"
+
+- id: "search.syntax_exact"
+  translation: "exact"
+
+- id: "search.syntax_prefix"
+  translation: "prefix"
+
+- id: "search.syntax_suffix"
+  translation: "suffix"
+
+- id: "search.syntax_exclude"
+  translation: "exclude"
+
+- id: "search.no_results"
+  translation: "No matching posts"
+
+- id: "search.error"
+  translation: "Search is temporarily unavailable"
+
+- id: "search.close"
+  translation: "Close"
+
 ## FOOTER ##
 - id: "footer.go_to_top"
   translation: "Go to top"

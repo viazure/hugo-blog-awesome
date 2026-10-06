@@ -12,6 +12,41 @@
 - id: "single.table_of_contents"
   translation: "Sommario"
 
+- id: "single.toc_open"
+  translation: "Apri indice"
+
+- id: "single.toc_close"
+  translation: "Chiudi indice"
+
+## SEARCH ##
+- id: "search.label"
+  translation: "Cerca"
+
+- id: "search.placeholder"
+  translation: "Cerca titolo, tag o testo"
+
+- id: "search.hint_navigate"
+  translation: "per scorrere"
+
+- id: "search.hint_select"
+  translation: "per aprire"
+
+- id: "search.hint_dismiss"
+  translation: "per chiudere"
+
+
+- id: "search.tips_label"
+  translation: "Sintassi di ricerca"
+
+- id: "search.no_results"
+  translation: "Nessun risultato"
+
+- id: "search.error"
+  translation: "Ricerca temporaneamente non disponibile"
+
+- id: "search.close"
+  translation: "Chiudi"
+
 ## FOOTER ##
 - id: "footer.go_to_top"
   translation: "Torna all'inizio"

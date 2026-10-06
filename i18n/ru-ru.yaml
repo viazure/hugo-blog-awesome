@@ -12,6 +12,41 @@
 - id: "single.table_of_contents"
   translation: "Содержание"
 
+- id: "single.toc_open"
+  translation: "Открыть содержание"
+
+- id: "single.toc_close"
+  translation: "Закрыть содержание"
+
+## SEARCH ##
+- id: "search.label"
+  translation: "Поиск"
+
+- id: "search.placeholder"
+  translation: "Искать заголовок, теги или текст"
+
+- id: "search.hint_navigate"
+  translation: "навигация"
+
+- id: "search.hint_select"
+  translation: "открыть"
+
+- id: "search.hint_dismiss"
+  translation: "закрыть"
+
+
+- id: "search.tips_label"
+  translation: "Синтаксис поиска"
+
+- id: "search.no_results"
+  translation: "Ничего не найдено"
+
+- id: "search.error"
+  translation: "Поиск временно недоступен"
+
+- id: "search.close"
+  translation: "Закрыть"
+
 ## FOOTER ##
 - id: "footer.go_to_top"
   translation: "Перейти наверх"

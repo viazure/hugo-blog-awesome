@@ -61,22 +61,3 @@ Notice: `.Params.toc` in the post will override `.Site.Params.toc`. After these 
     toc: false
     ---
     ```
-
-## Inhaltsverzeichnis aufklappen
-
-By default, ToC is closed. To open it by default, set parameter `tocOpen` to `true` in `hugo.toml`.
-
-```toml
-[params]
-  tocOpen = true
-```
-
-Or simply add the `tocOpen` parameter to the front matter of the post.
-
-```yaml
----
-title: How to enable table of content
-date: 2023-05-02
-tocOpen: true
----
-```

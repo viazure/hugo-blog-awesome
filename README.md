@@ -23,6 +23,11 @@
 
 - 新增基于 [GoatCounter](https://www.goatcounter.com/) 的网站统计系统
 
+### 目录与搜索
+
+- 文章目录改为滚动后右下角图标打开紧凑面板
+- 可选 Fuse.js 弹层搜索：`params.search = true`，并为 home 增加 JSON output
+
 ### 其他
 
 - 修改网页标题格式，只在非首页时显示副标题

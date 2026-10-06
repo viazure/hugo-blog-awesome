@@ -62,22 +62,3 @@ toc: true
     toc: false
     ---
     ```
-
-## 目次を開いておく方法
-
-既定の設定では、目次は閉じられた状態で表示されます。開いた状態で表示したい場合、`hugo.toml`内の`tocOpen`引数を`true`に設定してください。
-
-```toml
-[params]
-  tocOpen = true
-```
-
-あるいは、投稿内のfront matterに`tocOpen`引数を追加することもできます。
-
-```yaml
----
-title: 目次を有効にする方法
-date: 2023-05-02
-tocOpen: true
----
-```

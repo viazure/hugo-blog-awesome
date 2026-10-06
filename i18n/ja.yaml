@@ -12,6 +12,41 @@
 - id: "single.table_of_contents"
   translation: "目次"
 
+- id: "single.toc_open"
+  translation: "目次を開く"
+
+- id: "single.toc_close"
+  translation: "目次を閉じる"
+
+## SEARCH ##
+- id: "search.label"
+  translation: "検索"
+
+- id: "search.placeholder"
+  translation: "記事のタイトル・タグ・本文を検索"
+
+- id: "search.hint_navigate"
+  translation: "移動"
+
+- id: "search.hint_select"
+  translation: "開く"
+
+- id: "search.hint_dismiss"
+  translation: "閉じる"
+
+
+- id: "search.tips_label"
+  translation: "検索構文"
+
+- id: "search.no_results"
+  translation: "該当する記事がありません"
+
+- id: "search.error"
+  translation: "検索を一時的に利用できません"
+
+- id: "search.close"
+  translation: "閉じる"
+
 ## FOOTER ##
 - id: "footer.go_to_top"
   translation: "トップに戻る"

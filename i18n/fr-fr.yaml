@@ -12,6 +12,41 @@
 - id: "single.table_of_contents"
   translation: "Table des matières"
 
+- id: "single.toc_open"
+  translation: "Ouvrir la table des matières"
+
+- id: "single.toc_close"
+  translation: "Fermer la table des matières"
+
+## SEARCH ##
+- id: "search.label"
+  translation: "Rechercher"
+
+- id: "search.placeholder"
+  translation: "Rechercher titre, tags ou texte"
+
+- id: "search.hint_navigate"
+  translation: "pour naviguer"
+
+- id: "search.hint_select"
+  translation: "pour ouvrir"
+
+- id: "search.hint_dismiss"
+  translation: "pour fermer"
+
+
+- id: "search.tips_label"
+  translation: "Syntaxe de recherche"
+
+- id: "search.no_results"
+  translation: "Aucun résultat"
+
+- id: "search.error"
+  translation: "La recherche est temporairement indisponible"
+
+- id: "search.close"
+  translation: "Fermer"
+
 ## FOOTER ##
 - id: "footer.go_to_top"
   translation: "Aller en haut"

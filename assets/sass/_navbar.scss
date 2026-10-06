@@ -36,6 +36,15 @@
       margin: 0;
     }
 
+    .trigger-container {
+      display: flex;
+      align-items: center;
+
+      @include media-query($on-mobile) {
+        flex-direction: column;
+      }
+    }
+
     .menu-separator {
       margin-right: .7rem;
       @include media-query($on-mobile) {
@@ -200,6 +209,12 @@
           margin: 0;
           padding: 2px 0;
         }
+      }
+
+      .menu-search {
+        display: inline-flex;
+        margin: 0;
+        padding: 2px 0;
       }
     }
   }

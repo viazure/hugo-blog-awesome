@@ -60,22 +60,3 @@ Observação: `.Params.toc` na postagem irá sobrescrever `.Site.Params.toc`. Ap
     toc: false
     ---
     ```
-
-## Abrir o tabela de conteúdo
-
-Por padrão, o tabela de conteúdo (ToC) está fechado. Para abri-lo por padrão, defina o parâmetro `tocOpen` como `true` no arquivo `hugo.toml`.
-
-```toml
-[params]
-  tocOpen = true
-```
-
-Ou simplesmente adicione o parâmetro `tocOpen` à frente da postagem.
-
-```yaml
----
-title: Como habilitar o tabela de conteúdo
-date: 2023-05-02
-tocOpen: true
----
-```

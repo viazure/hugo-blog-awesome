@@ -1,22 +1,161 @@
-/* Table of contents */
-details {
-    cursor: pointer;
+@mixin toc-scroll {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
 }
 
-.toc {
-    margin: 1.1rem 0 1rem 0;
-    padding: .5rem 1rem .5rem 1rem;
-    border-radius: .3rem;
-    background-color: $toc-bg;
+.post-toc {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    background: transparent;
 
-    ul {
-        padding-top: 1rem;
-        margin-left: 1rem;
-        padding-left: 1rem;
+    &.is-open {
+        display: block;
+    }
+}
+
+.post-toc-panel {
+    position: absolute;
+    right: 30px;
+    bottom: 5.5rem;
+    width: 16rem;
+    max-width: calc(100vw - 2rem);
+    max-height: 70vh;
+    overflow: hidden;
+    padding: 0.9rem 1rem;
+    border: 1px solid $light;
+    border-radius: 0.35rem;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    font-size: $small-font-size;
+    line-height: 1.45;
+}
+
+.post-toc-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+}
+
+.post-toc-title {
+    margin: 0;
+    font-size: $small-font-size;
+    font-weight: $bold-weight;
+    color: $gray;
+}
+
+.post-toc-close {
+    display: inline-flex;
+    appearance: none;
+    border: 0;
+    padding: 0.2rem;
+    margin: 0;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.post-toc-nav {
+    @include toc-scroll;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+
+    #TableOfContents {
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
 
         li {
-        margin-bottom: 0.5em;
-        line-height: 1.4;
+            margin: 0;
         }
+
+        ul ul {
+            padding-left: 0.75rem;
+        }
+
+        a {
+            display: block;
+            padding: 0.22em 0 0.22em 0.55rem;
+            border-left: 2px solid transparent;
+            color: $gray;
+            text-decoration: none;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover,
+            &:focus-visible {
+                color: $text-base-color;
+            }
+
+            &.is-active {
+                color: $text-base-color;
+                border-left-color: $text-base-color;
+            }
+        }
+    }
+}
+
+.toc-fab {
+    display: block;
+    position: fixed;
+    right: 30px;
+    bottom: 7.25rem;
+    z-index: 3;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: 10%;
+    color: $text-base-color;
+    background-color: $go-top-bg;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+
+    &.is-visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    svg {
+        display: block;
+        margin: auto;
+    }
+
+    &:hover,
+    &:focus-visible {
+        background-color: $go-top-bg-hover;
+    }
+}
+
+#totop {
+    z-index: 4;
+    pointer-events: auto;
+}
+
+body.toc-open {
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .toc-fab {
+        transition: none;
     }
 }

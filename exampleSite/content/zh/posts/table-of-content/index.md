@@ -62,22 +62,3 @@ toc: true
     toc: false
     ---
     ```
-
-## 默认打开目录
-
-默认情况下，目录是关闭的。要默认打开它，请在 `hugo.toml` 中将参数 `tocOpen` 设置为 `true`。
-
-```toml
-[params]
-  tocOpen = true
-```
-
-或者直接在文章的 front matter 中添加 `tocOpen` 参数。
-
-```yaml
----
-title: 如何启用目录
-date: 2023-05-02
-tocOpen: true
----
-```

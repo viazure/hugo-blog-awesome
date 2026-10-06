@@ -1,16 +1,14 @@
-window.addEventListener('load', () => {
+(() => {
     const gttButton = document.getElementById("totop");
     if (!gttButton) return;
-    window.onscroll = () => {
-        if (
-            document.body.scrollTop > 300 ||
-            document.documentElement.scrollTop > 300
-        ) {
-            gttButton.style.visibility = "visible";
-            gttButton.style.opacity = "1";
-        } else {
-            gttButton.style.visibility = "hidden";
-            gttButton.style.opacity = "0";
-        }
+
+    const onScroll = () => {
+        const y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const show = y > 300;
+        gttButton.style.visibility = show ? "visible" : "hidden";
+        gttButton.style.opacity = show ? "1" : "0";
     };
-});
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+})();
