@@ -160,6 +160,14 @@
       a#mode {
         left: 10px;
         top: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 40px;
+        margin-top: 0.25rem;
+        padding: 6px;
+        opacity: 1;
       }
 
       .menu-icon {
@@ -194,27 +202,63 @@
         animation: 0.2s ease-in forwards fadein;
         -webkit-animation: 0.2s ease-in forwards fadein;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        justify-content: safe center;
+        box-sizing: border-box;
         height: 100vh;
+        height: 100dvh;
         width: 100%;
         top: 0;
+        left: 0;
+        padding: 1.5rem 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background-color: rgba(255, 255, 255, 0.7);
+        -webkit-backdrop-filter: blur(14px) saturate(1.15);
+        backdrop-filter: blur(14px) saturate(1.15);
+
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+          background-color: rgba(255, 255, 255, 0.94);
+        }
       }
 
       .menu-link {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         box-sizing: border-box;
         font-size: 1.1em;
+        opacity: 1;
+        min-height: 40px;
+        padding: 6px 12px;
+        margin: 0;
 
         &:not(:last-child) {
           margin: 0;
-          padding: 2px 0;
+        }
+
+        &.active {
+          color: $text-link-blue;
+          font-weight: 600;
         }
       }
 
       .menu-search {
         display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
         margin: 0;
-        padding: 2px 0;
+        min-height: 40px;
+        padding: 6px 12px;
+      }
+
+      .menu-link:focus-visible,
+      .menu-search:focus-visible,
+      a#mode:focus-visible {
+        outline: 3px solid rgba(0, 54, 199, 0.6);
+        outline-offset: 2px;
       }
     }
   }

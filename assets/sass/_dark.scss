@@ -190,7 +190,23 @@
         border-color: $dark-light;
 
         input[type="checkbox"]:checked~.trigger {
-          background: $dark-black;
+          background-color: rgba(19, 20, 24, 0.7);
+          -webkit-backdrop-filter: blur(14px) saturate(1.15);
+          backdrop-filter: blur(14px) saturate(1.15);
+
+          @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+            background-color: rgba(19, 20, 24, 0.94);
+          }
+        }
+
+        .menu-link.active {
+          color: $dark-text-link-blue;
+        }
+
+        .menu-link:focus-visible,
+        .menu-search:focus-visible,
+        a#mode:focus-visible {
+          outline-color: rgba(119, 168, 253, 0.75);
         }
       }
     }
